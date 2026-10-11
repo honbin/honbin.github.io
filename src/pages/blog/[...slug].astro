@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const dateFmt = new Intl.DateTimeFormat('ja-JP', { dateStyle: 'long' });
+---
+
+<BaseLayout title={`${post.data.title} | honbin`} description={post.data.description}>
+  <article>
+    <h2>{post.data.title}</h2>
+    <p class="meta">
+      <time datetime={post.data.pubDate.toISOString()}>
+        {dateFmt.format(post.data.pubDate)}
+      </time>
+      {
+        post.data.updatedDate && (
+          <span> · 更新: {dateFmt.format(post.data.updatedDate)}</span>
+        )
+      }
+    </p>
+    <Content />
+  </article>
+  <p><a href="/blog">← 記事一覧へ</a></p>
+</BaseLayout>

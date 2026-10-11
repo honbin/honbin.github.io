@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, description = 'my profile', image = '/images/honbin.jpg' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="honbin" />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrapper">
+        <h1><a href="/">honb.in</a></h1>
+        <nav>
+          <a href="/">Profile</a>
+          <a href="/blog">Blog</a>
+        </nav>
+      </div>
+    </header>
+    <main class="wrapper">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="wrapper">&copy; honbin</div>
+    </footer>
+  </body>
+</html>
