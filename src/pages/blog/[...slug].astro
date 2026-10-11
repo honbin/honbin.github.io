@@ -14,18 +14,24 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 
 const dateFmt = new Intl.DateTimeFormat('ja-JP', { dateStyle: 'long' });
+
+const pubStr = dateFmt.format(post.data.pubDate);
+const updatedStr = post.data.updatedDate && dateFmt.format(post.data.updatedDate);
+// Only show the updated date when it renders as a different day than the pub date.
+const showUpdated = updatedStr && updatedStr !== pubStr;
 ---
 
 <BaseLayout title={`${post.data.title} | honbin`} description={post.data.description}>
   <article>
     <h2>{post.data.title}</h2>
     <p class="meta">
-      <time datetime={post.data.pubDate.toISOString()}>
-        {dateFmt.format(post.data.pubDate)}
-      </time>
+      <time datetime={post.data.pubDate.toISOString()}>{pubStr}</time>
       {
-        post.data.updatedDate && (
-          <span> · 更新: {dateFmt.format(post.data.updatedDate)}</span>
+        showUpdated && (
+          <span>
+            {' · 更新: '}
+            <time datetime={post.data.updatedDate.toISOString()}>{updatedStr}</time>
+          </span>
         )
       }
     </p>
