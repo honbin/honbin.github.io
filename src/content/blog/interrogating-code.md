@@ -4,7 +4,7 @@ pubDate: 2026-10-05T21:21:06+09:00
 updatedDate: 2026-10-06T19:22:59+09:00
 draft: false
 ---
-前の記事で、「[AIが書いたコードに、自分は何を問えるか](/blog/2026-10-05-172219/)」という話を書いた。AIが書いたコードを理解するには、ただ読むだけではなく、「なぜこうなっているんだろう」と自分から問いを返す必要があるんじゃないかと。
+前の記事で、「[AIが書いたコードに、自分は何を問えるか](/blog/questioning-ai-code/)」という話を書いた。AIが書いたコードを理解するには、ただ読むだけではなく、「なぜこうなっているんだろう」と自分から問いを返す必要があるんじゃないかと。
 
 最近、そのための質問を `interrogate` という小さなskillにまとめて使っている。きっかけになったのは、kawasimaさんの「[Generation-then-comprehension](https://scrapbox.io/kawasima/Generation-then-comprehension)」という記事だった。たとえば、
 
