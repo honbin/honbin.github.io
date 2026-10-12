@@ -24,7 +24,7 @@ const updatedStr = post.data.updatedDate ? dateFmt.format(post.data.updatedDate)
 
 <BaseLayout title={`${post.data.title} | honbin`} description={post.data.description}>
   <article>
-    <h2>{post.data.title}</h2>
+    <h1>{post.data.title}</h1>
     <p class="meta">
       <time datetime={post.data.pubDate.toISOString()}>{pubStr}</time>
       {
@@ -38,5 +38,5 @@ const updatedStr = post.data.updatedDate ? dateFmt.format(post.data.updatedDate)
     </p>
     <Content />
   </article>
-  <p><a href="/blog">← Back to posts</a></p>
+  <p><a href="/blog/">← Back to posts</a></p>
 </BaseLayout>

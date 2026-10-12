@@ -2,12 +2,19 @@
 import '../styles/global.css';
 
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
   image?: string;
+  // Markdown pages (layout: BaseLayout) receive their metadata here instead.
+  frontmatter?: {
+    title: string;
+    description?: string;
+    image?: string;
+  };
 }
 
-const { title, description, image = '/images/honbin.jpg' } = Astro.props;
+// Markdown pages pass metadata under `frontmatter`; .astro pages pass flat props.
+const { title, description, image = '/images/honbin.jpg' } = Astro.props.frontmatter ?? Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -29,10 +36,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <body>
     <header class="site-header">
       <div class="wrapper">
-        <h1><a href="/">honb.in</a></h1>
+        <a href="/" class="site-logo">honb.in</a>
         <nav>
-          <a href="/">Profile</a>
-          <a href="/blog">Blog</a>
+          <a href="/profile/">Profile</a>
+          <a href="/blog/">Blog</a>
         </nav>
       </div>
     </header>

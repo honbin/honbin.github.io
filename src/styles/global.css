@@ -66,11 +66,9 @@ header.site-header .wrapper {
   padding-bottom: 1.25rem;
 }
 
-header.site-header h1 {
-  margin: 0;
-}
-
-header.site-header h1 a {
+.site-logo {
+  font-size: 1.7rem;
+  font-weight: 700;
   color: var(--fg);
 }
 
