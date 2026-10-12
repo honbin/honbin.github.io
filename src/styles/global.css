@@ -115,7 +115,7 @@ ul.post-list time {
 
 ul.post-list a {
   color: var(--fg);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 article .meta {
