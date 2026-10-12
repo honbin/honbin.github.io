@@ -125,6 +125,10 @@ article .meta {
   font-size: 0.9rem;
 }
 
+article a {
+  text-decoration: underline;
+}
+
 /* Code blocks: give them a visible container since Shiki's bg matches the page. */
 .astro-code {
   padding: 0.9rem 1rem;
