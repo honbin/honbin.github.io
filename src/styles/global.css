@@ -44,6 +44,10 @@ body {
   padding: 2rem 1.25rem 4rem;
 }
 
+main.wrapper > :is(h1, h2, h3):first-child {
+  margin-top: 0;
+}
+
 a {
   color: var(--accent);
   text-decoration: none;

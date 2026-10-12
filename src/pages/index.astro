@@ -10,17 +10,9 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', { dateStyle: 'medium', timeZone
 ---
 
 <BaseLayout title="honbin" description="my profile">
-  <img src="/images/honbin.jpg" alt="Satoshi Honda" width="200" />
-
   <h1>Satoshi Honda</h1>
+  <img src="/images/honbin.jpg" alt="Satoshi Honda" width="160" />
   <p><a href="/profile/">View profile →</a></p>
-
-  <h2>Links</h2>
-  <ul>
-    <li>Mail: <a href="mailto:bin.honda@gmail.com">bin.honda@gmail.com</a></li>
-    <li>Github: <a href="https://github.com/honbin">honbin</a></li>
-    <li>過去ログ: <a href="https://honbin.hatenablog.com">記録 (Hatena)</a></li>
-  </ul>
 
   <h2>Recent posts</h2>
   {
@@ -40,4 +32,11 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', { dateStyle: 'medium', timeZone
     )
   }
   <p><a href="/blog/">All posts →</a></p>
+
+  <h2>Links</h2>
+  <ul>
+    <li>Mail: <a href="mailto:bin.honda@gmail.com">bin.honda@gmail.com</a></li>
+    <li>GitHub: <a href="https://github.com/honbin">honbin</a></li>
+    <li>過去ログ: <a href="https://honbin.hatenablog.com">記録 (Hatena)</a></li>
+  </ul>
 </BaseLayout>
