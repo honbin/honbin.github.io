@@ -15,9 +15,11 @@ npm run build    # output to dist/
 Create `src/content/blog/<slug>.md` with frontmatter:
 
 - Required: `title`, `pubDate`
-- Optional: `description`, `updatedDate`, `sourceUrl`, `draft`
+- Optional: `description`, `updatedDate`, `draft`
 
 Set `draft: true` to exclude a post from the published site.
+
+Use a descriptive slug for the filename (e.g. `my-new-post.md`). Use a date-only `pubDate` by default; include a time when publishing multiple posts on the same day.
 
 ## Deploy
 
