@@ -21,7 +21,7 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', { dateStyle: 'medium', timeZone
             <time datetime={post.data.pubDate.toISOString()}>
               {dateFmt.format(post.data.pubDate)}
             </time>
-            <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+            <h2><a href={`/blog/${post.id}/`}>{post.data.title}</a></h2>
             {post.data.description && <p>{post.data.description}</p>}
           </li>
         ))}
