@@ -115,6 +115,11 @@ ul.post-list time {
   display: block;
 }
 
+ul.post-list a {
+  color: var(--fg);
+  font-weight: 600;
+}
+
 article .meta {
   color: var(--muted);
   font-size: 0.9rem;
