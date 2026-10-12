@@ -13,7 +13,7 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', { dateStyle: 'medium', timeZone
   <h2>Blog</h2>
   {
     posts.length === 0 ? (
-      <p>まだ記事がありません。</p>
+      <p>No posts yet.</p>
     ) : (
       <ul class="post-list">
         {posts.map((post) => (

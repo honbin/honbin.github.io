@@ -30,7 +30,7 @@ const updatedStr = post.data.updatedDate ? dateFmt.format(post.data.updatedDate)
       {
         post.data.updatedDate && (
           <span>
-            {' · 更新: '}
+            {' · Updated: '}
             <time datetime={post.data.updatedDate.toISOString()}>{updatedStr}</time>
           </span>
         )
@@ -38,5 +38,5 @@ const updatedStr = post.data.updatedDate ? dateFmt.format(post.data.updatedDate)
     </p>
     <Content />
   </article>
-  <p><a href="/blog">← 記事一覧へ</a></p>
+  <p><a href="/blog">← Back to posts</a></p>
 </BaseLayout>
