@@ -38,5 +38,7 @@ export async function GET(context: APIContext) {
     description: "Satoshi Honda のブログ",
     site,
     items,
+    xmlns: { atom: "http://www.w3.org/2005/Atom" },
+    customData: `<atom:link href="${base}/rss.xml" rel="self" type="application/rss+xml"/>`,
   });
 }
