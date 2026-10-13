@@ -14,21 +14,26 @@ export async function GET(context: APIContext) {
   const base = site.href.replace(/\/$/, "");
 
   // Same source of truth as the blog list: the validated collection.
-  const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-  );
+  // Cap at the 20 most recent posts to bound the full-content feed's growth.
+  const posts = (await getCollection("blog", ({ data }) => !data.draft))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 20);
 
   const items = await Promise.all(
     posts.map(async (post) => {
       const load = bodies[`../content/blog/${post.id}.md`];
       if (!load) throw new Error(`Missing blog body: ${post.id}`);
       const html = await (await load()).compiledContent();
+      const url = `${base}/blog/${post.id}/`;
       return {
         title: post.data.title,
         pubDate: post.data.pubDate,
         link: `/blog/${post.id}/`,
-        // Make root-relative href/src absolute (skip protocol-relative //).
-        content: html.replace(/(href|src)="\/(?!\/)/g, `$1="${base}/`),
+        content: html
+          // Make root-relative href/src absolute (skip protocol-relative //).
+          .replace(/(href|src)="\/(?!\/)/g, `$1="${base}/`)
+          // Resolve in-page anchors against the post (readers resolve # against their own page).
+          .replace(/href="#/g, `href="${url}#`),
       };
     }),
   );
