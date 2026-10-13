@@ -5,17 +5,19 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  type?: 'website' | 'article';
   // Markdown pages (layout: BaseLayout) receive their metadata here instead.
   frontmatter?: {
     title: string;
     description?: string;
     image?: string;
+    type?: 'website' | 'article';
   };
 }
 
 // Markdown pages pass metadata under `frontmatter`; .astro pages pass flat props.
-// Pages opt in to og:image by providing an image.
-const { title, description, image } = Astro.props.frontmatter ?? Astro.props;
+// Pages opt in to og:image by providing an image; posts set type="article".
+const { title, description, image, type = 'website' } = Astro.props.frontmatter ?? Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -32,7 +34,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     {description && <meta name="description" content={description} />}
     <link rel="canonical" href={canonical} />
     <meta property="og:title" content={title} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
     {description && <meta property="og:description" content={description} />}
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="honbin" />
