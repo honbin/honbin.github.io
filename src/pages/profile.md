@@ -6,6 +6,8 @@ description: Satoshi Honda — Software Engineer
 
 # Satoshi Honda
 
+<img src="/images/honbin.jpg" alt="Satoshi Honda" width="160" height="160" />
+
 Software Engineer
 
 Webサービスの開発に携わっています。バックエンドを中心に、フロントエンドやインフラまで、必要に応じて幅広く取り組んできました。

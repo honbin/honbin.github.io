@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs><clipPath id="c"><rect width="1000" height="1000" rx="120"/></clipPath></defs>
+  <g clip-path="url(#c)">
+    <polygon points="0,0 500,0 154,296 0,279 0,279" fill="#c63d1e" stroke="#c63d1e" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="500,0 500,344 154,296" fill="#f85929" stroke="#f85929" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="0,279 154,296 500,344 240,571" fill="#e14521" stroke="#e14521" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="0,279 0,279 240,571 0,748" fill="#712215" stroke="#712215" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="0,748 240,571 500,1000 0,1000" fill="#281612" stroke="#281612" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="240,571 500,344 500,1000" fill="#46261d" stroke="#46261d" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="500,344 500,1000 880,1000" fill="#e8c190" stroke="#e8c190" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="500,344 880,1000 1000,1000 1000,454" fill="#f9edde" stroke="#f9edde" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="500,344 1000,454 1000,130" fill="#291612" stroke="#291612" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="500,0 1000,0 1000,130 500,344" fill="#722215" stroke="#722215" stroke-width="1.5" stroke-linejoin="round"/>
+  </g>
+</svg>
