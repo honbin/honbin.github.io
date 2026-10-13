@@ -133,6 +133,21 @@ article .meta {
   font-size: 0.9rem;
 }
 
+.blog-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.blog-header h1 {
+  margin-top: 0;
+}
+
+.feed-link {
+  font-size: 0.85rem;
+}
+
 article a {
   text-decoration: underline;
 }

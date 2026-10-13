@@ -10,7 +10,10 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', { dateStyle: 'medium', timeZone
 ---
 
 <BaseLayout title="Blog | honbin" description="honbin のブログ">
-  <h1>Blog</h1>
+  <div class="blog-header">
+    <h1>Blog</h1>
+    <a class="feed-link" href="/rss.xml">RSS</a>
+  </div>
   {
     posts.length === 0 ? (
       <p>No posts yet.</p>
