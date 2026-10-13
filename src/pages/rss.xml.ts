@@ -39,8 +39,6 @@ export async function GET(context: APIContext) {
     site,
     items,
     xmlns: { atom: "http://www.w3.org/2005/Atom" },
-    customData:
-      `<atom:link href="${base}/rss.xml" rel="self" type="application/rss+xml"/>` +
-      `<image><url>${base}/images/feed-icon.png</url><title>honb.in</title><link>${base}/</link><width>144</width><height>144</height></image>`,
+    customData: `<atom:link href="${base}/rss.xml" rel="self" type="application/rss+xml"/>`,
   });
 }
