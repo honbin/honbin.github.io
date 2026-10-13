@@ -15,7 +15,7 @@ const { Content } = await render(post);
 
 // Use the first prose paragraph as a fallback for social/meta descriptions.
 // The blog list continues to use only hand-written descriptions.
-function excerpt(md: string, max = 120): string | undefined {
+function excerpt(md: string, max = 150): string | undefined {
   const block = md
     .split(/\n\s*\n/)
     .map((s) => s.trim())
