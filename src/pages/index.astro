@@ -9,7 +9,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 const dateFmt = new Intl.DateTimeFormat('ja-JP', { dateStyle: 'medium', timeZone: 'Asia/Tokyo' });
 ---
 
-<BaseLayout title="honbin" description="my profile">
+<BaseLayout title="honbin" description="my profile" image="/images/honbin-icon.png">
   <h1>Satoshi Honda</h1>
   <img src="/images/honbin.svg" alt="honb.in" width="160" height="160" />
   <p><a href="/profile/">View profile →</a></p>

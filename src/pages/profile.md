@@ -2,6 +2,7 @@
 layout: ../layouts/BaseLayout.astro
 title: Profile | honbin
 description: Satoshi Honda — Software Engineer
+image: /images/honbin.jpg
 ---
 
 # Satoshi Honda

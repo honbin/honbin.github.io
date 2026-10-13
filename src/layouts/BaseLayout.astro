@@ -14,7 +14,8 @@ interface Props {
 }
 
 // Markdown pages pass metadata under `frontmatter`; .astro pages pass flat props.
-const { title, description, image = '/images/honbin.jpg' } = Astro.props.frontmatter ?? Astro.props;
+// Pages opt in to og:image by providing an image.
+const { title, description, image } = Astro.props.frontmatter ?? Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -35,7 +36,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     {description && <meta property="og:description" content={description} />}
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="honbin" />
-    <meta property="og:image" content={new URL(image, Astro.site)} />
+    {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
   </head>
   <body>
     <header class="site-header">
