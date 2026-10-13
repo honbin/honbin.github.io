@@ -42,7 +42,12 @@ const pubStr = dateFmt.format(post.data.pubDate);
 const updatedStr = post.data.updatedDate ? dateFmt.format(post.data.updatedDate) : undefined;
 ---
 
-<BaseLayout title={`${post.data.title} | honbin`} description={description} type="article">
+<BaseLayout
+  title={`${post.data.title} | honbin`}
+  description={description}
+  image={post.data.image}
+  type="article"
+>
   <article>
     <h1>{post.data.title}</h1>
     <p class="meta">
