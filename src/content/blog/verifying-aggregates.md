@@ -7,7 +7,7 @@ draft: false
 
 ## 取得したデータを確認する
 
-障害調査などでCloudWatch Logs Insightsからログを取得するとき、結果が10,000件の上限に達していないかを、その都度確認していた。 指定した時間範囲のログを取得しても、その範囲のデータがすべて取れているとは限らない。件数の上限に達していれば、クエリのソート順によっては、時間範囲の一部に偏っている可能性もある。 そこで、Rustで作っている [incident-kit](https://github.com/honbin/incident-kit) に `window-audit` を追加した。
+障害調査などでCloudWatch Logs Insightsからログを取得するとき、結果が10,000件の上限に達していないかを、その都度確認していた。 指定した時間範囲のログを取得しても、その範囲のデータがすべて取れているとは限らない。件数の上限に達していれば、クエリのソート順によっては、時間範囲の一部に偏っている可能性もある。 そこで、Rustで作っている [tskit](https://github.com/honbin/tskit) に `window-audit` を追加した。
 
 ```sh
 jq -r .time alb.jsonl |
