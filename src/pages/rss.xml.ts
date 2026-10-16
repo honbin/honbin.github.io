@@ -1,6 +1,7 @@
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 import type { APIContext } from "astro";
+import { excerpt } from "../utils/excerpt";
 
 // Post bodies as compiled HTML, keyed by file path. getCollection can't return
 // rendered HTML without the Container API, so the body is read here instead.
@@ -29,11 +30,16 @@ export async function GET(context: APIContext) {
         title: post.data.title,
         pubDate: post.data.pubDate,
         link: `/blog/${post.id}/`,
+        // Emit a summary before the full content:encoded so readers that key off
+        // <description> show an excerpt rather than the whole post (or nothing).
+        description: post.data.description ?? excerpt(post.body ?? ""),
         content: html
           // Make root-relative href/src absolute (skip protocol-relative //).
           .replace(/(href|src)="\/(?!\/)/g, `$1="${base}/`)
           // Resolve in-page anchors against the post (readers resolve # against their own page).
-          .replace(/href="#/g, `href="${url}#`),
+          .replace(/href="#/g, `href="${url}#`)
+          // Let feed readers control code block colors instead of using Shiki's inline styles.
+          .replace(/\s+style="[^"]*"/g, ""),
       };
     }),
   );

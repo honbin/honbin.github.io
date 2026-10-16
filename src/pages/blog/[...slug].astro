@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
+import { excerpt } from '../../utils/excerpt';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -13,24 +14,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-// Use the first prose paragraph as a fallback for social/meta descriptions.
 // The blog list continues to use only hand-written descriptions.
-function excerpt(md: string, max = 150): string | undefined {
-  const block = md
-    .split(/\n\s*\n/)
-    .map((s) => s.trim())
-    .find((s) => s && !s.startsWith('#') && !s.startsWith('```') && !s.startsWith('!['));
-  if (!block) return undefined;
-  const text = block
-    .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
-    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
-    .replace(/[*_`>#]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-  if (!text) return undefined; // avoid emitting an empty description tag
-  return text.length > max ? text.slice(0, max) + '…' : text;
-}
-
 const description = post.data.description ?? excerpt(post.body ?? '');
 
 const dateFmt = new Intl.DateTimeFormat('ja-JP', {
