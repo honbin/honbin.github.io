@@ -8,7 +8,7 @@ AIと開発していると、実装だけでなく、設計の検討や問題の
 
 こうした開発の過程を、あとから振り返りやすくしたいと思った。
 
-そこで、Claude Code と Codex のセッション履歴をまとめて読める TUI、[ccscope](https://github.com/honbin/ccscope) を作った。
+そこで、Claude Code と Codex のセッション履歴をまとめて読める TUI、[dtrail](https://github.com/honbin/dtrail) を作った。
 セッション一覧と会話を並べて表示し、過去のやり取りを読み返せる。
 
 何かを検索して答えを見つけるというより、セッションをざっと眺めながら、そのとき何を考え、どう進めていたのかを振り返る。
