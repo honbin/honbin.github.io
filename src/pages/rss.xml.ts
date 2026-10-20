@@ -1,7 +1,7 @@
 import rss from "@astrojs/rss";
-import { getCollection } from "astro:content";
 import type { APIContext } from "astro";
 import { excerpt } from "../utils/excerpt";
+import { getSortedPosts } from "../utils/posts";
 
 // Post bodies as compiled HTML, keyed by file path. getCollection can't return
 // rendered HTML without the Container API, so the body is read here instead.
@@ -14,11 +14,8 @@ export async function GET(context: APIContext) {
   if (!site) throw new Error("`site` must be set in astro.config.mjs");
   const base = site.href.replace(/\/$/, "");
 
-  // Same source of truth as the blog list: the validated collection.
   // Cap at the 20 most recent posts to bound the full-content feed's growth.
-  const posts = (await getCollection("blog", ({ data }) => !data.draft))
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-    .slice(0, 20);
+  const posts = (await getSortedPosts()).slice(0, 20);
 
   const items = await Promise.all(
     posts.map(async (post) => {
