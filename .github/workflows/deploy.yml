@@ -3,17 +3,13 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
   id-token: write
-
-# Allow one concurrent deployment; let in-progress deploys finish.
-concurrency:
-  group: pages
-  cancel-in-progress: false
 
 jobs:
   build:
@@ -25,8 +21,13 @@ jobs:
         uses: withastro/action@v4
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
+    # Job-level so PR builds never queue behind (or cancel a pending) deploy.
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
