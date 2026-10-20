@@ -36,9 +36,9 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', { dateStyle: 'medium', timeZone
   {
     page.lastPage > 1 && (
       <nav class="pager">
-        {page.url.prev ? <a href={page.url.prev}>← 新しい記事</a> : <span />}
+        {page.url.prev ? <a href={page.url.prev}>← Newer posts</a> : <span />}
         <span class="pager-pos">{page.currentPage} / {page.lastPage}</span>
-        {page.url.next ? <a href={page.url.next}>古い記事 →</a> : <span />}
+        {page.url.next ? <a href={page.url.next}>Older posts →</a> : <span />}
       </nav>
     )
   }
