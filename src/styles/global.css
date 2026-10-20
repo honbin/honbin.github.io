@@ -148,6 +148,19 @@ article .meta {
   font-size: 0.85rem;
 }
 
+.pager {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.pager-pos {
+  color: var(--muted);
+}
+
 article a {
   text-decoration: underline;
 }

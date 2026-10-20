@@ -2,9 +2,14 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+export async function getStaticPaths({ paginate }) {
+  const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
+  return paginate(posts, { pageSize: 10 });
+}
+
+const { page } = Astro.props;
 
 const dateFmt = new Intl.DateTimeFormat('ja-JP', { dateStyle: 'medium', timeZone: 'Asia/Tokyo' });
 ---
@@ -15,11 +20,11 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', { dateStyle: 'medium', timeZone
     <a class="feed-link" href="/rss.xml">RSS</a>
   </div>
   {
-    posts.length === 0 ? (
+    page.data.length === 0 ? (
       <p>No posts yet.</p>
     ) : (
       <ul class="post-list">
-        {posts.map((post) => (
+        {page.data.map((post) => (
           <li>
             <time datetime={post.data.pubDate.toISOString()}>
               {dateFmt.format(post.data.pubDate)}
@@ -29,6 +34,15 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', { dateStyle: 'medium', timeZone
           </li>
         ))}
       </ul>
+    )
+  }
+  {
+    page.lastPage > 1 && (
+      <nav class="pager">
+        {page.url.prev ? <a href={page.url.prev}>← 新しい記事</a> : <span />}
+        <span class="pager-pos">{page.currentPage} / {page.lastPage}</span>
+        {page.url.next ? <a href={page.url.next}>古い記事 →</a> : <span />}
+      </nav>
     )
   }
 </BaseLayout>
